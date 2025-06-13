@@ -1,0 +1,33 @@
+<div class="game-container">
+  <!-- Game status display -->
+  <div class="game-status">
+    @if (gameStatus === 'ongoing') {
+      <p>Current Player: {{ currentPlayer }}</p>
+    } @else if (gameStatus === 'win') {
+      <p>Player {{ winner }} wins!</p>
+    } @else {
+      <p>Game ended in a draw!</p>
+    }
+  </div>
+
+  <!-- Game board -->
+  <div class="game-board">
+    @for (row of board; track $index; let i = $index) {
+      <div class="board-row">
+        @for (cell of row; track $index; let j = $index) {
+          <button 
+            class="cell" 
+            [class.x]="cell === 'X'"
+            [class.o]="cell === 'O'"
+            (click)="makeMove(i, j)"
+            [disabled]="cell !== '' || gameStatus !== 'ongoing'">
+            {{ cell }}
+          </button>
+        }
+      </div>
+    }
+  </div>
+
+  <!-- Reset button -->
+  <button class="reset-button" (click)="resetGame()">Reset Game</button>
+</div>

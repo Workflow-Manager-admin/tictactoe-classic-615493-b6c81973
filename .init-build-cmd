@@ -1,0 +1,4 @@
+{
+    "command": "npm install && npm run build",
+    "working_directory": "/tmp/kavia/workspace/code-generation/tictactoe-classic-615493-b6c81973/tictactoe_classic"
+}
